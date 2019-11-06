@@ -70,7 +70,6 @@ void stack() {
   *
   *
   */
-
   intake.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
   intake2.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
   liftmov=true;
