@@ -218,12 +218,6 @@ void usercontrol( void ) {
             }
           }
           
-        } else {
-          LeftF.stop();
-          LeftB.stop();
-          RightF.stop();
-          RightB.stop();
-          lift.stop();
         }
         
         if(Controller.ButtonB.pressing()){
