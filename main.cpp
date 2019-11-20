@@ -207,12 +207,12 @@ void usercontrol( void ) {
           intake.spin(vex::directionType::fwd,-40,vex::velocityUnits::pct);
           intake2.spin(vex::directionType::fwd,40,vex::velocityUnits::pct);
           vex::task::sleep(1250);
-          lift.spin(vex::directionType::fwd, 85*liftvelopercentage, vex::velocityUnits::pct);
+          lift.spin(vex::directionType::fwd, 60*liftvelopercentage, vex::velocityUnits::pct);
           vex::task::sleep(1250);  
-          LeftF.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
-          RightF.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
-          LeftB.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
-          RightB.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
+          LeftF.spin(vex::directionType::fwd,25,vex::velocityUnits::pct);
+          RightF.spin(vex::directionType::fwd,-25,vex::velocityUnits::pct);
+          LeftB.spin(vex::directionType::fwd,-25,vex::velocityUnits::pct);
+          RightB.spin(vex::directionType::fwd,25,vex::velocityUnits::pct);
           vex::task::sleep(750);
           
           LeftF.stop();
@@ -236,7 +236,7 @@ void usercontrol( void ) {
 int main() {
     pre_auton();
     Competition.autonomous( autonomous );
-    Competition.drivercontrol( usercontrol );                       
+    Competition.drivercontrol( usercontrol );                     
     while(1) {
       vex::task::sleep(100);
     }
