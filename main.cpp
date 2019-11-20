@@ -210,7 +210,6 @@ void usercontrol( void ) {
 
           if(intake.isSpinning() && intake2.isSpinning()) {
             lift.spin(vex::directionType::fwd, 85*liftvelopercentage, vex::velocityUnits::pct);
-            vex::task::sleep(750);
             if(lift.isSpinning()){
               LeftF.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
               RightF.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
@@ -219,6 +218,7 @@ void usercontrol( void ) {
             }
           }
           
+        } else {
           LeftF.stop();
           LeftB.stop();
           RightF.stop();
