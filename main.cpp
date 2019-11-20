@@ -204,21 +204,24 @@ void usercontrol( void ) {
           liftmov=true;
           liftang = lift.rotation(vex::rotationUnits::deg);
 
-
           intake.spin(vex::directionType::fwd,-40,vex::velocityUnits::pct);
           intake2.spin(vex::directionType::fwd,40,vex::velocityUnits::pct);
-
-          if(intake.isSpinning() && intake2.isSpinning()) {
-            lift.spin(vex::directionType::fwd, 85*liftvelopercentage, vex::velocityUnits::pct);
-            if(lift.isSpinning()){
-              LeftF.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
-              RightF.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
-              LeftB.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
-              RightB.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
-            }
-          }
+          vex::task::sleep(1250);
+          lift.spin(vex::directionType::fwd, 85*liftvelopercentage, vex::velocityUnits::pct);
+          vex::task::sleep(1250);  
+          LeftF.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
+          RightF.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
+          LeftB.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
+          RightB.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
+          vex::task::sleep(750);
           
-        }
+          LeftF.stop();
+          LeftB.stop();
+          RightF.stop();
+          RightB.stop();
+          lift.stop();
+        
+        } 
         
         if(Controller.ButtonB.pressing()){
             LeftF.resetRotation();
@@ -229,6 +232,7 @@ void usercontrol( void ) {
         }
     }
 }
+
 int main() {
     pre_auton();
     Competition.autonomous( autonomous );
