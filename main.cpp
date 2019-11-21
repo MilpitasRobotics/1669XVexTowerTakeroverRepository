@@ -204,22 +204,27 @@ void usercontrol( void ) {
           liftmov=true;
           liftang = lift.rotation(vex::rotationUnits::deg);
 
-          intake.spin(vex::directionType::fwd,-40,vex::velocityUnits::pct);
-          intake2.spin(vex::directionType::fwd,40,vex::velocityUnits::pct);
-          vex::task::sleep(1250);
-          lift.spin(vex::directionType::fwd, 60*liftvelopercentage, vex::velocityUnits::pct);
-          vex::task::sleep(1250);  
-          LeftF.spin(vex::directionType::fwd,25,vex::velocityUnits::pct);
-          RightF.spin(vex::directionType::fwd,-25,vex::velocityUnits::pct);
-          LeftB.spin(vex::directionType::fwd,-25,vex::velocityUnits::pct);
-          RightB.spin(vex::directionType::fwd,25,vex::velocityUnits::pct);
+          intake.spin(vex::directionType::fwd,60,vex::velocityUnits::pct);
+          intake2.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
+          lift.spin(vex::directionType::fwd, 150*liftvelopercentage, vex::velocityUnits::pct);
+          vex::task::sleep(650);
+          LeftF.spin(vex::directionType::fwd,30,vex::velocityUnits::pct);
+          RightF.spin(vex::directionType::fwd,-30,vex::velocityUnits::pct);
+          LeftB.spin(vex::directionType::fwd,-30,vex::velocityUnits::pct);
+          RightB.spin(vex::directionType::fwd,30,vex::velocityUnits::pct);
+          lift.stop();
+          LeftF.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);                                                                   
+          RightF.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
+          LeftB.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
+          RightB.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
           vex::task::sleep(750);
-          
+          lift.stop();
           LeftF.stop();
           LeftB.stop();
           RightF.stop();
           RightB.stop();
-          lift.stop();
+          
+         
         
         } 
         
