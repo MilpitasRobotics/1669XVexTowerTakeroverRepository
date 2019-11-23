@@ -43,37 +43,51 @@ float temps = 0;
 //robot turns 90 degrees, goes forward, stacks, goes backward after stacking
 //stacking is almost same code for macro in user control method
 void autonomous( void ) {
-    LeftF.spinFor(- 1 * first_path, vex::deg);
-    RightF.spinFor(first_path, vex::deg);
-    LeftB.spinFor(first_path, vex::deg);
-    RightB.spinFor(- 1 * first_path, vex::deg);
-    intake.spin(vex::directionType::fwd,100,vex::velocityUnits::pct);
-    intake2.spin(vex::directionType::fwd,-100,vex::velocityUnits::pct);
-    intake.stop();
-    intake2.stop();
-    LeftF.spinFor(-1 * first_path, vex::deg);
-    RightF.spinFor(-1 * first_path, vex::deg);
-    LeftB.spinFor(first_path, vex::deg);
-    RightB.spinFor(first_path, vex::deg);
-    LeftF.spinFor(-1 * distanceTravelled , vex::deg);
-    RightF.spinFor(distanceTravelled, vex::deg);
-    LeftB.spinFor(-1 * distanceTravelled, vex::deg);
-    RightB.spinFor(distanceTravelled, vex::deg);
-    LeftF.spinFor(- 1 *second_path, vex::deg);
-    RightF.spinFor(second_path, vex::deg);
-    LeftB.spinFor(second_path, vex::deg);
-    RightB.spinFor(- 1 * second_path, vex::deg);
-    vex::task sleep;
+  intake.spin(vex::directionType::fwd,-65,vex::velocityUnits::pct);
+  intake2.spin(vex::directionType::fwd,65,vex::velocityUnits::pct);
+  LeftF.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
+  RightF.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
+  LeftB.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
+  RightB.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
+  vex::task::sleep(2200);
 }
 
+/*void autonProto() {
+  LeftF.spinFor(- 1 * first_path, vex::deg);
+  RightF.spinFor(first_path, vex::deg);
+  LeftB.spinFor(first_path, vex::deg);
+  RightB.spinFor(- 1 * first_path, vex::deg);
+  LeftF.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
+  RightF.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
+  LeftB.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
+  RightB.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
+  intake.spin(vex::directionType::fwd,100,vex::velocityUnits::pct);
+  intake2.spin(vex::directionType::fwd,-100,vex::velocityUnits::pct);
+  intake.stop();
+  intake2.stop();
+  LeftF.spinFor(-1 * first_path, vex::deg);
+  RightF.spinFor(-1 * first_path, vex::deg);
+  LeftB.spinFor(first_path, vex::deg);
+  RightB.spinFor(first_path, vex::deg);
+  LeftF.spinFor(-1 * distanceTravelled , vex::deg);
+  RightF.spinFor(distanceTravelled, vex::deg);
+  LeftB.spinFor(-1 * distanceTravelled, vex::deg);
+  RightB.spinFor(distanceTravelled, vex::deg);
+  LeftF.spinFor(- 1 *second_path, vex::deg);
+  RightF.spinFor(second_path, vex::deg);
+  LeftB.spinFor(second_path, vex::deg);
+  RightB.spinFor(- 1 * second_path, vex::deg);
+  vex::task sleep;
+}*/
+
 void forward() {
-  //robot picks up the cubes
-    LeftF.spinFor(- 1 * 50, vex::deg);
-    RightF.spinFor(50, vex::deg);
-    LeftB.spinFor(50, vex::deg);
-    RightB.spinFor(- 1 * 50, vex::deg);
-    intake.stop();
-    intake2.stop();
+//robot picks up the cubes
+  LeftF.spinFor(- 1 * 50, vex::deg);
+  RightF.spinFor(50, vex::deg);
+  LeftB.spinFor(50, vex::deg);
+  RightB.spinFor(- 1 * 50, vex::deg);
+  intake.stop();
+  intake2.stop();
 }
 
 void backward() {
@@ -132,8 +146,8 @@ void usercontrol( void ) {
         Brain.Screen.printAt(10,90,"Lift %f",lift.rotation(vex::rotationUnits::deg)+temps);
         Brain.Screen.newLine();
         if(Controller.Axis3.value()!=0||Controller.Axis1.value()!=0){
-            LeftF.spin(vex::directionType::fwd,-Controller.Axis3.value()+(-Controller.Axis1.value()),vex::velocityUnits::pct);
-            RightF.spin(vex::directionType::fwd,Controller.Axis3.value()+(-Controller.Axis1.value()),vex::velocityUnits::pct);
+            LeftF.spin(vex::directionType::fwd,Controller.Axis3.value()+(Controller.Axis1.value()),vex::velocityUnits::pct);
+            RightF.spin(vex::directionType::fwd,-Controller.Axis3.value()+(Controller.Axis1.value()),vex::velocityUnits::pct);
             LeftB.spin(vex::directionType::fwd,Controller.Axis3.value()+(Controller.Axis1.value()),vex::velocityUnits::pct);
             RightB.spin(vex::directionType::fwd,-Controller.Axis3.value()+(Controller.Axis1.value()),vex::velocityUnits::pct);
         }else{
@@ -208,13 +222,13 @@ void usercontrol( void ) {
           intake2.spin(vex::directionType::fwd,-60,vex::velocityUnits::pct);
           lift.spin(vex::directionType::fwd, 150*liftvelopercentage, vex::velocityUnits::pct);
           vex::task::sleep(650);
-          LeftF.spin(vex::directionType::fwd,30,vex::velocityUnits::pct);
-          RightF.spin(vex::directionType::fwd,-30,vex::velocityUnits::pct);
+          LeftF.spin(vex::directionType::fwd,-30,vex::velocityUnits::pct);
+          RightF.spin(vex::directionType::fwd,30,vex::velocityUnits::pct);
           LeftB.spin(vex::directionType::fwd,-30,vex::velocityUnits::pct);
           RightB.spin(vex::directionType::fwd,30,vex::velocityUnits::pct);
           lift.stop();
-          LeftF.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);                                                                   
-          RightF.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
+          LeftF.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);                                                                   
+          RightF.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
           LeftB.spin(vex::directionType::fwd,-50,vex::velocityUnits::pct);
           RightB.spin(vex::directionType::fwd,50,vex::velocityUnits::pct);
           vex::task::sleep(750);
