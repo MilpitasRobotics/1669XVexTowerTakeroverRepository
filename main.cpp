@@ -1,6 +1,7 @@
-#include "robot-config.h"
+#include "vex.h"
 #include "iostream"
-vex::competition    Competition;
+vex::competition Competition;
+
 void pre_auton( void ) {
     
 } 
@@ -8,26 +9,22 @@ void pre_auton( void ) {
 /*
 * all this code is progressive and needs to be fixed and tuned 
 */
-
 //values for calculations for degree movement for auton
-
 // clicks per inch and distance calculated to move certain degrees
 
 float C = 12.566;
 float clickperinch = 360/C;
 //distance in inches
 float distance = 23.42;
-
 //first path: degrees robot needs to move forward to pick cubes
 float first_path = clickperinch * distance;
 float distance2 = 11.708;
-
 //second path: dgrees robot moves to stacking place
 float second_path = clickperinch * distance2;
-
 //robot turns 90 degrees (or it is supposed to) to face the goal
 float turndeg= C / 4;
 float distanceTravelled = turndeg / 2.54;
+
 
 //values needed for calculation for PID loop
 float liftang = lift.rotation(vex::rotationUnits::deg);
@@ -191,15 +188,14 @@ void usercontrol( void ) {
         }
         if(Controller.ButtonL1.pressing()){
             liftmov=true;
-            lift.spin(vex::directionType::fwd,-50*liftvelopercentage,vex::velocityUnits::pct);
+            lift.spin(vex::directionType::fwd,-100*liftvelopercentage,vex::velocityUnits::pct);
             liftang = lift.rotation(vex::rotationUnits::deg);
         }else if(Controller.ButtonL2.pressing()){
             liftmov=true;
-            lift.spin(vex::directionType::fwd,50*liftvelopercentage,vex::velocityUnits::pct);
+            lift.spin(vex::directionType::fwd,100*liftvelopercentage,vex::velocityUnits::pct);
             liftang = lift.rotation(vex::rotationUnits::deg);
         }else{
             liftang=liftang+0;
-            //lift.stop(vex::brakeType::brake);
         }
         if(Controller.ButtonUp.pressing()){
             liftmov=true;
@@ -211,10 +207,8 @@ void usercontrol( void ) {
             liftang = lift.rotation(vex::rotationUnits::deg);
         }else{
             liftang=liftang+0;
-            //lift.stop(vex::brakeType::brake);
         }
         if(Controller.ButtonX.pressing()) {
-          //lift pid vars
           liftmov=true;
           liftang = lift.rotation(vex::rotationUnits::deg);
 
@@ -237,11 +231,7 @@ void usercontrol( void ) {
           LeftB.stop();
           RightF.stop();
           RightB.stop();
-          
-         
-        
         } 
-        
         if(Controller.ButtonB.pressing()){
             LeftF.resetRotation();
             RightF.resetRotation();
