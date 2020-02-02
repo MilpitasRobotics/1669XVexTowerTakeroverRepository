@@ -9,10 +9,10 @@ void pre_auton( void ) {
 /*
 * all this code is progressive and needs to be fixed and tuned 
 */
+
 //values for calculations for degree movement for auton
 // clicks per inch and distance calculated to move certain degrees
-
-float C = 12.566;
+/*float C = 12.566;
 float clickperinch = 360/C;
 //distance in inches
 float distance = 23.42;
@@ -23,7 +23,7 @@ float distance2 = 11.708;
 float second_path = clickperinch * distance2;
 //robot turns 90 degrees (or it is supposed to) to face the goal
 float turndeg= C / 4;
-float distanceTravelled = turndeg / 2.54;
+float distanceTravelled = turndeg / 2.54;*/
 
 
 //values needed for calculation for PID loop
