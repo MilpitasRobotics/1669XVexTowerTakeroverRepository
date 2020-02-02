@@ -1,17 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
+using namespace vex;
 
-#include "v5.h"
-#include "v5_vcs.h"
-//
-vex::brain Brain;
-vex::controller Controller = vex::controller();
-vex::motor LeftF = vex::motor(vex::PORT1); //left front motor connected to port1 of vex brain
-vex::motor RightF = vex::motor(vex::PORT2); //right front motor connected to port2
-vex::motor LeftB = vex::motor(vex::PORT3); // left back motor connected to port 3
-vex::motor RightB = vex::motor(vex::PORT4); //right back motor connected to port 4
-vex::motor lift = vex::motor(vex::PORT5); //lift motor with pid connected to port5
-vex::motor intake = vex::motor(vex::PORT6); //intake motor 1 connected to port 6
-vex::motor intake2 = vex::motor(vex::PORT7); //intake motor 2 connected to port 7.
+extern brain Brain;
+extern controller Controller ;
+extern motor LeftF ; 
+extern motor RightF ; 
+extern motor LeftB ; 
+extern motor RightB ;
+extern motor lift ;
+extern motor intake ;
+extern motor intake2 ;
+/**
+ * Used to initialize code/tasks/devices added using tools in VEXcode Text.
+ *
+ * This should be called at the start of your int main function.
+ */
+void vexcodeInit(void);
