@@ -118,6 +118,8 @@ void stack() {
   lift.stop();
 }
 void autonomous( void ) {
+  intake.spin(vex::directionType::fwd,-100,vex::velocityUnits::pct);
+  intake2.spin(vex::directionType::fwd,100,vex::velocityUnits::pct);
   goStraight(110.14);
   turn(-90);
   wait(2000, msec);
