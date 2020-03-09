@@ -310,13 +310,6 @@ void usercontrol(void) {
           macroliftvelo = 0.08*targeterror;
         } 
         lift.spin(vex::directionType::fwd, macroliftvelo,vex::velocityUnits::pct);
-
-        if(abs(float(target-lift.rotation(vex::rotationUnits::deg)))<100) {
-          lift.stop();
-        }
-      }
-      lift.resetPosition();
-      lift.resetRotation();
     }
     if (Controller.ButtonB.pressing()) {
       LeftF.resetRotation();
